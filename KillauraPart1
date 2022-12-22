@@ -1,1 +1,20 @@
 
+if game.ReplicatedStorage.GameRemotes:FindFirstChild("RequestDamage") then -- No more fall damage <333
+game.ReplicatedStorage.GameRemotes.RequestDamage:Destroy()
+end
+
+game.Lighting.Brightness = 4
+game.Lighting.Ambient = Color3.fromRGB(128,128,128)
+
+function attack(player)
+local remoteToFire = game.ReplicatedStorage.GameRemotes.Attack
+if not(remoteToFire) then
+top.Text = "ERROR, REMOTE EVENT MISSING."
+else
+remoteToFire:InvokeServer(player.Character)
+end
+end
+
+local localPlayer = game.Players.LocalPlayer
+local mouse = localPlayer:GetMouse()
+local botActive = false
